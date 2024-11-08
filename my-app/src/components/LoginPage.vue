@@ -1,63 +1,178 @@
-<!-- src/components/Login.vue -->
 <template>
-  <div class="login">
-    <h2>Login</h2>
-    <form>
-      <label for="username">Username:</label>
-      <input type="text" id="username" v-model="username" />
-      
-      <label for="password">Password:</label>
-      <input type="password" id="password" v-model="password" />
-      
-      <button @click.prevent="login">Login</button>
-    </form>
+  <div class="main-login">
+    <div class="left-login">
+      <h1>Seja Bem-Vindo !<br>Faça seu login agora mesmo!</h1>
+      <img src="@/assets/img-login.svg" class="left-login-image" alt="Imagem de Login" />
+    </div>
+    <div class="right-login">
+      <div class="card-login">
+        <h1>LOGIN</h1>
+        <div class="textfield">
+          <label for="usuario">Usuário</label>
+          <input type="text" id="usuario" v-model="username" placeholder="Usuário" />
+        </div>
+        <div class="textfield">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" v-model="password" placeholder="Senha" />
+        </div>
+        <button class="btn-login" @click="login">Login</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: "LoginPage",
   data() {
     return {
-      username: '',
-      password: ''
+      username: "",
+      password: ""
     };
   },
   methods: {
     login() {
-      // Lógica de autenticação aqui
-      console.log('Usuário:', this.username);
-      console.log('Senha:', this.password);
+      // Lógica de autenticação
+      console.log("Usuário:", this.username);
+      console.log("Senha:", this.password);
     }
   }
 };
 </script>
 
 <style scoped>
-.login {
-  max-width: 300px;
-  margin: auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+body {
+    margin: 0;
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-label {
-  display: block;
-  margin: 0.5rem 0 0.25rem;
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: #201b2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-button {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+.left-login>h1 {
+    font-size: 3vw;
+    color: #77ffc0;
+}
+
+.left-login-image {
+    width: 35vw;
+}
+
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card-login>h1 {
+    color: #00ff88;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.textfield>input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #6c6288;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield>label {
+    color: #f0ffffde;
+    margin-bottom: 10px;
+
+}
+
+.textfield>input::placeholder {
+    color: #f0ffff94;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b1346;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+@media only screen and (max-width: 950px) {
+    .card-login {
+        width: 85%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .main-login {
+        flex-direction: column;
+    }
+
+    .left-login>h1 {
+        display: none;
+    }
+
+    .left-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .rigth-login {
+        width: 100%;
+        height: auto;
+    }
 }
 </style>
