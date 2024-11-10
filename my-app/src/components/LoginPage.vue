@@ -39,13 +39,11 @@ export default {
         const response = await fetch("/users.json");
         const users = await response.json();
 
-        // Verifica as credenciais
         const user = users.find(user => user.username === this.username && user.password === this.password);
 
         if (user) {
-          // Limpa a mensagem de erro e redireciona para o jogo
           this.errorMessage = "";
-          this.$router.push("/GamePage"); // Redireciona para a página do jogo
+          this.$router.push("/GamePage"); 
         } else {
           // Exibe uma mensagem de erro se as credenciais forem incorretas
           this.errorMessage = "Usuário ou senha incorretos";
@@ -60,7 +58,6 @@ export default {
 </script>
 
 <style scoped>
-/* Seu CSS existente permanece o mesmo */
 body {
   margin: 0;
   font-family: "Anta", sans-serif;
