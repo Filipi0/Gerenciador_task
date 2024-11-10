@@ -1,16 +1,16 @@
-<!-- src/App.vue -->
 <template>
   <div id="app">
-    <LoginPage />
+    <!-- router-view é onde os componentes das rotas serão exibidos -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import LoginPage from './components/LoginPage.vue';
-
 export default {
-  components: {
-    LoginPage
-  }
+  name: "App",
 };
 </script>
+
+<style>
+/* Adicione aqui os estilos globais, se necessário */
+</style>

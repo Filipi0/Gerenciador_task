@@ -22,30 +22,42 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "LoginPage",
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     };
   },
   methods: {
-    login() {
-      // Lógica de autenticação
-      console.log("Usuário:", this.username);
-      console.log("Senha:", this.password);
+    async login() {
+      try {
+        const response = await axios.post("http://localhost:3000/login", {
+          username: this.username,
+          password: this.password
+        });
+        const token = response.data.token;
+        localStorage.setItem("token", token); // Armazena o token
+        this.$router.push("/dashboard"); // Redireciona para a página de dashboard
+      } catch (error) {
+        this.errorMessage = "Usuário ou senha incorretos";
+      }
     }
   }
 };
 </script>
+
 
 <style scoped>
 body {
     margin: 0;
     font-family: "Anta", sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: sans-serif;
 }
 
 .main-login {
