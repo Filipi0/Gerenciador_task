@@ -33,21 +33,25 @@ export default {
       errorMessage: ""
     };
   },
-  methods: {
-    async login() {
-      try {
-        const response = await axios.post("http://localhost:3000/login", {
-          username: this.username,
-          password: this.password
-        });
-        const token = response.data.token;
-        localStorage.setItem("token", token); // Armazena o token
-        this.$router.push("/dashboard"); // Redireciona para a página de dashboard
-      } catch (error) {
-        this.errorMessage = "Usuário ou senha incorretos";
+ methods: {
+  async login() {
+    try {
+      const response = await axios.post("http://localhost:3000/login", {
+        username: this.username,
+        password: this.password
+      });
+      const token = response.data.token;
+      if (token) {
+        localStorage.setItem("token", token);
+        this.$router.push("/game"); // Redireciona para a página do jogo
+      } else {
+        this.errorMessage = "Falha no login. Tente novamente.";
       }
+    } catch (error) {
+      this.errorMessage = "Usuário ou senha incorretos";
     }
   }
+}
 };
 </script>
 
