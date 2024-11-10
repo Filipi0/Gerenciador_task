@@ -93,22 +93,95 @@ export default {
 </script>
 
 <style scoped>
+body {
+  background-color: #201b2c;
+  color: #f0ffffde;
+  font-family: "Anta", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .game-container {
   text-align: center;
-  max-width: 400px;
+  width: 90%;
+  max-width: 600px; 
   margin: auto;
+  padding: 40px; 
+  background: #2f2841;
+  border-radius: 15px;
+  box-shadow: 0px 10px 40px #00000056;
 }
 
-.input-container {
-  margin: 20px 0;
+h1, h2 {
+  color: #77ffc0;
+  margin-bottom: 20px;
 }
 
-.feedback, .score, .ranking-container {
-  margin-top: 10px;
+p {
+  color: #f0ffff94;
+}
+
+.input-container, .feedback, .score, .ranking-container {
+  margin-top: 15px;
+}
+
+input[type="text"] {
+  width: 75%;
+  padding: 15px; 
+  border: none;
+  border-radius: 8px;
+  background: #6c6288;
+  color: #f0ffffde;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
 }
 
 button {
-  margin-top: 15px;
+  padding: 14px 20px; 
+  border: none;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 7px;
+  color: #2b1346;
+  background: #00ff88;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px -12px #00ff8052;
+  margin-top: 20px; 
+}
+
+button:hover {
+  background: #77ffc0;
+}
+
+.feedback {
+  font-size: 1.2em;
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.score {
+  font-size: 1.1em;
+  color: #f0ffff94;
+}
+
+.ranking-container {
+  margin-top: 30px;
+}
+
+.ranking-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ranking-container li {
+  background: #6c6288;
   padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  color: #f0ffffde;
 }
 </style>
