@@ -1,4 +1,5 @@
 <template>
+
   <div class="main-login">
     <div class="left-login">
       <h1>Seja Bem-Vindo !<br>Faça seu login agora mesmo!</h1>
@@ -18,7 +19,7 @@
         <button class="btn-login" @click="login">Login</button>
         <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       </div>
-    </div>
+        </div>
   </div>
 </template>
 
@@ -43,7 +44,7 @@ export default {
 
         if (user) {
           this.errorMessage = "";
-          this.$router.push("/GamePage"); 
+          this.$router.push("/GamePage");
         } else {
           // Exibe uma mensagem de erro se as credenciais forem incorretas
           this.errorMessage = "Usuário ou senha incorretos";
@@ -58,19 +59,17 @@ export default {
 </script>
 
 <style scoped>
-body {
+* {
   margin: 0;
-  font-family: "Anta", sans-serif;
-  font-weight: 400;
-}
+  padding: 0;
 
+}
 .main-login {
-  width: 100vw;
-  height: 100vh;
   background: #201b2c;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 .left-login {
@@ -93,7 +92,6 @@ body {
 
 .right-login {
   width: 50vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
