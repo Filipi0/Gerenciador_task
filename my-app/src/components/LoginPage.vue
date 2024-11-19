@@ -1,60 +1,29 @@
 <template>
-
-  <div class="main-login">
-    <div class="left-login">
-      <h1>Seja Bem-Vindo !<br>Faça seu login agora mesmo!</h1>
-      <img src="@/assets/img-login.svg" class="left-login-image" alt="Imagem de Login" />
+  <div class="main-screen">
+    <div class="content-container">
+      <h1 class="game-title">Adivinhe o Número</h1>
+      <p class="game-description">
+        Bem-vindo! Aqui estão as regras do jogo:
+      </p>
+      <ul class="game-rules">
+        <li>1. Você deve adivinhar um número entre <strong>1 e 100</strong>.</li>
+        <li>2. A cada tentativa errada, você perde <strong>10 pontos</strong>.</li>
+        <li>3. O objetivo é adivinhar o número com a maior pontuação possível!</li>
+      </ul>
+      <button class="btn-enter" @click="goToGame">Entrar no Jogo</button>
     </div>
-    <div class="right-login">
-      <div class="card-login">
-        <h1>LOGIN</h1>
-        <div class="textfield">
-          <label for="usuario">Usuário</label>
-          <input type="text" id="usuario" v-model="username" placeholder="Usuário" />
-        </div>
-        <div class="textfield">
-          <label for="senha">Senha</label>
-          <input type="password" id="senha" v-model="password" placeholder="Senha" />
-        </div>
-        <button class="btn-login" @click="login">Login</button>
-        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-      </div>
-        </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LoginPage",
-  data() {
-    return {
-      username: "",
-      password: "",
-      errorMessage: ""
-    };
-  },
+  name: "WelcomePage",
   methods: {
-    async login() {
-      try {
-        // Carrega o arquivo JSON com as credenciais
-        const response = await fetch("/users.json");
-        const users = await response.json();
-
-        const user = users.find(user => user.username === this.username && user.password === this.password);
-
-        if (user) {
-          this.errorMessage = "";
-          this.$router.push("/GamePage");
-        } else {
-          // Exibe uma mensagem de erro se as credenciais forem incorretas
-          this.errorMessage = "Usuário ou senha incorretos";
-        }
-      } catch (error) {
-        console.error("Erro ao carregar as credenciais:", error);
-        this.errorMessage = "Erro ao fazer login. Tente novamente.";
-      }
-    }
-  }
+    goToGame() {
+      // Redireciona para a página do jogo
+      this.$router.push("/GamePage");
+    },
+  },
 };
 </script>
 
@@ -62,134 +31,87 @@ export default {
 * {
   margin: 0;
   padding: 0;
-
-}
-.main-login {
-  background: #201b2c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-}
-
-.left-login {
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.left-login>h1 {
-  font-size: 3vw;
-  color: #77ffc0;
-}
-
-.left-login-image {
-  width: 35vw;
-}
-
-.right-login {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-login {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px 35px;
-  background: #2f2841;
-  border-radius: 20px;
-  box-shadow: 0px 10px 40px #00000056;
-}
-
-.card-login>h1 {
-  color: #00ff88;
-  font-weight: 800;
-  margin: 0;
-}
-
-.textfield {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 10px 0;
-}
-
-.textfield>input {
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  padding: 15px;
-  background: #6c6288;
-  color: #f0ffffde;
-  font-size: 12pt;
-  box-shadow: 0px 10px 40px #00000056;
-  outline: none;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.textfield>label {
-  color: #f0ffffde;
-  margin-bottom: 10px;
-}
-
-.textfield>input::placeholder {
-  color: #f0ffff94;
-}
-
-.btn-login {
+html, body {
+  height: 100%;
   width: 100%;
-  padding: 16px 0px;
-  margin: 25px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 3px;
+  background: #2f2841;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Remove rolagem */
+}
+
+.main-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #2f2841;
+}
+
+.content-container {
+  text-align: center;
+  color: #ffffff;
+  padding: 50px;
+}
+
+.game-title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #00ff88;
+  margin-bottom: 50px;
+  margin-top: -50px;
+}
+
+.game-description {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #77ffc0;
+  margin-bottom: 30px;
+}
+
+.game-rules {
+  text-align: left;
+  margin: 0 auto 30px auto;
+  padding: 0;
+  list-style-type: none;
+  color: #f0ffffde;
+  transform: translate(120px);
+}
+
+.game-rules li {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.game-rules strong {
+  color: #00ff88;
+}
+
+.btn-enter {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #2b1346;
   background: #00ff88;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0px 10px 40px -12px #00ff8052;
+  box-shadow: 0px 10px 40px rgba(0, 255, 136, 0.6);
+  transition: all 0.5s ease-in-out;
+  margin-top: 50px;
 }
 
-@media only screen and (max-width: 950px) {
-  .card-login {
-    width: 85%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .main-login {
-    flex-direction: column;
-  }
-
-  .left-login>h1 {
-    display: none;
-  }
-
-  .left-login {
-    width: 100%;
-    height: auto;
-  }
-
-  .right-login {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
+.btn-enter:hover {
+  background: #77ffc0;
+  box-shadow: 0px 10px 50px rgba(119, 255, 192, 0.8);
+  transform: scale(1.05);
 }
 </style>
