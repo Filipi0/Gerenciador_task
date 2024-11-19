@@ -41,8 +41,12 @@
         <button @click="closeCongrats">Fechar</button>
       </div>
     </div>
+
+    <!-- Botão de Voltar -->
+    <button class="btn-back" @click="goToWelcome">Voltar</button>
   </div>
 </template>
+
 
 <script>
 import confetti from "canvas-confetti";
@@ -122,9 +126,14 @@ export default {
         origin: { y: 0.6 },
       });
     },
+    goToWelcome() {
+      // Redireciona para a tela inicial
+      this.$router.push("/");
+    },
   },
 };
 </script>
+
 
 <style scoped>
 /* Reseta margens e paddings padrões */
@@ -285,4 +294,28 @@ button:hover {
 .modal-content button:hover {
   background-color: #77ffc0;
 }
+
+.btn-back {
+  position: fixed;
+  bottom: 40px;
+  right: 120px;
+  padding: 15px 20px;
+  font-size: 0.6rem;
+  font-weight: bold;
+  letter-spacing: 7px;
+  color: #2b1346;
+  background: #00ff88;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px rgba(0, 255, 136, 0.6);
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase ;
+}
+
+.btn-back:hover {
+  background: #77ffc0;
+  transform: scale(1.05);
+}
+
 </style>
